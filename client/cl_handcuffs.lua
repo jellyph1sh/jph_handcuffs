@@ -10,6 +10,9 @@ end
 local function DisableControlActions(player, disableActions)
     Citizen.CreateThread(function()
         while IsHandcuffed(player) do
+            if IsEntityDead(player) then
+                isHandcuff = false
+            end
             for i, action in pairs(disableActions) do
                 DisableControlAction(2, action, true)
             end
@@ -53,6 +56,7 @@ local function AddPropToPlayer(prop, player)
         })
     else
         objProp = CreateObject(hash, x, y, z + 0.2, true, true, true)
+        SetEntityCollision(objProp, false, false)
         table.insert(propsId, objProp)
         AttachEntityToEntity(objProp, player, GetPedBoneIndex(player, 0xEEEB), 0.3, 0.04, 0.04, -25.0, 125.0, 140.0, true, true, false, true, 1, true)
         SetModelAsNoLongerNeeded(hash)
