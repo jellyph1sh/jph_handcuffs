@@ -1,4 +1,4 @@
-# **TXP_HANDCUFFS**
+# **JPH_HANDCUFFS**
 
 ## **DESCRIPTION :**
 Simple script to handcuff a player with handcuff animation.
