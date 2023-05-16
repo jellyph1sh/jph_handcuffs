@@ -3,7 +3,7 @@ game "gta5"
 
 version "1.0"
 description "Basic handcuffs script."
-author "Time_XP"
+author "Jellyph1sh"
 
 client_script "client/cl_handcuffs.lua"
 
