@@ -5,7 +5,9 @@ version "1.0"
 description "Basic handcuffs script."
 author "Jellyph1sh"
 
-client_script "client/cl_handcuffs.lua"
+client_scripts {
+    "client/cl_handcuffs.lua"
+}
 
 server_script "server/sv_handcuffs.lua"
 

@@ -82,9 +82,9 @@ local function DeleteProps(props)
     return props
 end
 
-RegisterNetEvent("txp_handcuffs:handcuff")
-AddEventHandler("txp_handcuffs:handcuff", function()
-    local player = GetPlayerPed(-1)
+RegisterNetEvent("jph_handcuffs:handcuff")
+AddEventHandler("jph_handcuffs:handcuff", function()
+    local player = PlayerPedId()
     if IsHandcuffed(player) then
         ClearPedTasks(player)
         propsId = DeleteProps(propsId)
@@ -95,5 +95,25 @@ AddEventHandler("txp_handcuffs:handcuff", function()
     isHandcuff = not isHandcuff
     SetEnableHandcuffs(player, isHandcuff)
 end)
+
+AddEventHandler("jph_gamemode:PlayerSpawned", function()
+    isHandcuff = false
+
+    if #propsId > 0 then
+        propsId = DeleteProps(propsId)
+    end
+
+    -- if characterData.job_name == "bcso" or characterData.job_name == "sast" then
+        
+    -- end
+end)
+
+exports.ox_target:addGlobalPlayer({
+    label = "Handcuffs",
+    name = "handcuffs",
+    icon = "handcuffs",
+    distance = 2.0,
+    serverEvent = "jph_handcuffs:requestHandcuff"
+})
 
 TriggerEvent('chat:addSuggestion', '/handcuff', 'Handcuff target player.', {{ name="Target ID", help="Target player ID" }})
